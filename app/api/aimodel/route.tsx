@@ -50,8 +50,66 @@ Where 'ui': indicates which component to render in the frontend:
 
 `
 
+const FINAL_PROMPT = `Generate a detailed travel plan with the given details.  
+Include a list of hotel options with the following fields:  
+- Hotel name, hotel address, price per night, hotel image URL, geo-coordinates (latitude & longitude), rating, and description.  
+
+Also, suggest a complete itinerary with the following details:  
+- Day-wise plan including activities, best time to visit each day.  
+- For each activity/place: place name, place details, place image URL, geo-coordinates (latitude & longitude), place address, ticket pricing, estimated travel time to reach the location, and best time to visit.  
+
+Return the output strictly in **valid JSON format** following this schema:
+
+{
+  "trip_plan": {
+    "destination": "string",
+    "duration": "string",
+    "origin": "string",
+    "budget": "string",
+    "group_size": "string",
+    "hotels": [
+      {
+        "hotel_name": "string",
+        "hotel_address": "string",
+        "price_per_night": "string",
+        "hotel_image_url": "string",
+        "geo_coordinates": {
+          "latitude": "number",
+          "longitude": "number"
+        },
+        "rating": "number",
+        "description": "string"
+      }
+    ],
+    "itinerary": [
+      {
+        "day": "number",
+        "day_plan": "string",
+        "best_time_to_visit_day": "string",
+        "activities": [
+          {
+            "place_name": "string",
+            "place_details": "string",
+            "place_image_url": "string",
+            "geo_coordinates": {
+              "latitude": "number",
+              "longitude": "number"
+            },
+            "place_address": "string",
+            "ticket_pricing": "string",
+            "time_travel_each_location": "string",
+            "best_time_to_visit": "string"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+`
+
 export async function POST(req:NextRequest) {
-    const {messages} = await req.json();
+    const {messages, isFinal} = await req.json();
     try {
     const completion = await openai.chat.completions.create({
     model: 'gemini-2.0-flash',
@@ -59,7 +117,7 @@ export async function POST(req:NextRequest) {
     messages: [
         {
             role:'system',
-            content:PROMPT
+            content: isFinal ? FINAL_PROMPT : PROMPT
         },
       ...messages
     ],
