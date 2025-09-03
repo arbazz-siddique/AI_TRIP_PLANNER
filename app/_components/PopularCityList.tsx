@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
+import Image from "next/image";
 
 export function PopularCityList() {
   const cards = data.map((card, index) => (
@@ -51,19 +52,27 @@ const DummyContent = () => {
 };
 
 const data = [
-  {
-    category: "Paris, France",
-    title: "Explore the City of Lights - Eiffel Tower, Louvre & more",
-    src: "https://images.unsplash.com/photo-1566555374250-e99b902bcdbc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8UGFyaXMlMkMlMjBGcmFuY2V8ZW58MHx8MHx8fDA%3D",
-    content: <DummyContent />,
-  },
+
    {
     category: "Nepal",
     title: "Mystical Himalayas – Kathmandu, Pokhara & Everest Views",
     src: "https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmVwYWx8ZW58MHx8MHx8fDA%3D",
     content: <DummyContent />,
   },
+    {
+    category: "Paris, France",
+    title: "Explore the City of Lights - Eiffel Tower, Louvre & more",
+    src: "https://images.unsplash.com/photo-1566555374250-e99b902bcdbc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8UGFyaXMlMkMlMjBGcmFuY2V8ZW58MHx8MHx8fDA%3D",
+    content: <DummyContent />,
+  },
+
   {
+    category: "India",
+    title: "Colors of Culture - Taj Mahal, Jaipur & Kerala Backwaters",
+    src: "https://images.unsplash.com/photo-1515091943-9d5c0ad475af?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fEluZGlhfGVufDB8fDB8fHww",
+    content: <DummyContent />,
+  },
+   {
     category: "New York, USA",
     title: "Experience NYC - Times Square, Central Park, Broadway",
     src: "https://images.unsplash.com/photo-1701750131051-8f1753498688?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8TmV3JTIwWW9yayUyQyUyMFVTQXxlbnwwfHwwfHx8MA%3D%3D",
@@ -87,12 +96,5 @@ const data = [
     src: "https://images.unsplash.com/photo-1671618802338-682e248b48e8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZHViYWklMjB1YWV8ZW58MHx8MHx8fDA%3D",
     content: <DummyContent />,
   },
-  {
-    category: "India",
-    title: "Colors of Culture - Taj Mahal, Jaipur & Kerala Backwaters",
-    src: "https://images.unsplash.com/photo-1515091943-9d5c0ad475af?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fEluZGlhfGVufDB8fDB8fHww",
-    content: <DummyContent />,
-  },
- 
 ];
 
