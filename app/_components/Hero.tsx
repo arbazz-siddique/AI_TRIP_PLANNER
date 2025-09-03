@@ -38,6 +38,7 @@ const Hero = () => {
             return ;
         }
         // naviations
+        router.push('/create-new-trip')
     }
 
   return (
@@ -50,7 +51,7 @@ const Hero = () => {
         <div>
             <div className='border rounded-2xl p-4 relative'>
                 <Textarea placeholder='Create a trip for parise from new york' className='w-full h-28 bg-transparent border-none focus-visible:ring-0 shadow-none resize-none' />
-                <Button size={'icon'} className='absolute bottom-6 right-6' onClick={()=>onSend()} >
+                <Button size={'icon'} className='absolute bottom-6 right-6 cursor-pointer' onClick={()=>onSend()} >
                     <Send className='h-4 w-4'/>
                 </Button>
             </div>
