@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { SignInButton, useUser } from "@clerk/nextjs";
+import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -44,6 +44,7 @@ const Header = () => {
       </div>
 
       {/* Get started Button */}
+      <div className="flex gap-5 items-center">
       {!user ? (
         <SignInButton mode="modal">
           <Button>Get Started</Button>
@@ -54,6 +55,8 @@ const Header = () => {
         </Link>
         
       )}
+      <UserButton/>
+         </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from 'openai';
 import { aj } from "../arcjet/route";
-import { currentUser } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 
 
 const openai = new OpenAI({
@@ -113,10 +113,13 @@ Return the output strictly in **valid JSON format** following this schema:
 export async function POST(req:NextRequest) {
     const {messages, isFinal} = await req.json();
     const user = await currentUser();
+    const {has}= await auth();
+    const hasPremiumAccess = has({plan: 'monthly'})
+    console.log("clear preimu test: ", hasPremiumAccess)
     const decision = await aj.protect(req, { userId:user?.primaryEmailAddress?.emailAddress ?? '', requested: isFinal ? 5 : 0});
     console.log(decision)
     // @ts-ignore
-    if (decision?.reason?.remaining == 0) {
+    if (decision?.reason?.remaining == 0 && !hasPremiumAccess) {
     return NextResponse.json(
       {
         resp:'No Free Credit Remaining Switch to Premium',
