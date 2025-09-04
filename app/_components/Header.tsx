@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 const menuOptions = [
@@ -22,13 +23,18 @@ const menuOptions = [
 
 const Header = () => {
   const { user } = useUser();
+  const path = usePathname();
+  
   return (
     <div className="flex justify-between items-center p-4">
       {/* log */}
-      <div className="flex gap-3 items-center">
+      <Link href={'/'}>
+      <div className="flex gap-3 items-center cursor-pointer">
         <Image src={"/logo.svg"} alt="logo" width={30} height={30} />
         <h2 className="font-bold text-xl text-primary">AI Trip Planner</h2>
       </div>
+      </Link>
+      
       {/* menu options */}
 
       <div className="flex gap-8 items-center">
@@ -50,7 +56,11 @@ const Header = () => {
           <Button>Get Started</Button>
         </SignInButton>
       ) : (
-        <Link href={'/create-new-trip'}>
+        path == "/create-new-trip" ? 
+        <Link href={'/my-trips'}>
+        <Button>My Trip</Button>
+        </Link>
+        :<Link href={'/create-new-trip'}>
         <Button>Create New Trip</Button>
         </Link>
         

@@ -1,8 +1,16 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import { Timeline } from "@/components/ui/timeline";
 import Image from "next/image";
-import { ArrowLeft, Clock, ExternalLink, LucideTimer, Star, Ticket, Wallet2 } from "lucide-react";
+import {
+  ArrowLeft,
+  Clock,
+  ExternalLink,
+  LucideTimer,
+  Star,
+  Ticket,
+  Wallet2,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import HotelCardItem from "./HotelCardItem";
@@ -206,52 +214,74 @@ import { TripInfo } from "./ChatBox";
 //   ],
 // };
 
-
 function Iternerary() {
   // @ts-ignore
-    const {tripDetailInfo, setTripDetailInfo} = useTripDetail()
-    const [tripData, setTripData] = useState<TripInfo | null>(null)
+  const { tripDetailInfo, setTripDetailInfo } = useTripDetail();
+  const [tripData, setTripData] = useState<TripInfo | null>(null);
 
-    useEffect(()=>{
-      tripDetailInfo && setTripData(tripDetailInfo)
-    },[tripDetailInfo])
+  useEffect(() => {
+    tripDetailInfo && setTripData(tripDetailInfo);
+  }, [tripDetailInfo]);
 
-  const data = tripData ? [
-    {
-      title: "Hotels",
-      content: (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-          {tripData?.hotels.map((hotel, index) => (
-            <HotelCardItem key={hotel.hotel_name} hotel={hotel} />
-          ))}
-        </div>
-      ),
-    },
-    ...tripData?.itinerary.map((dayData) => ({
-      title: `Day ${dayData?.day}`,
-      content: (
-        <div className="">
-          <p> <strong>Best Time</strong> : <strong className="text-primary"> <em> {dayData?.best_time_to_visit_day}</em> </strong></p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-            {dayData?.activities.map((activity, index) => (
-             <PlaceCardItem key={activity.place_name} activity={activity}/>
-            ))}
-          </div>
-        </div>
-      ),
-    })),
-  ]:[]
+  const data = tripData
+    ? [
+        {
+          title: "Hotels",
+          content: (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
+              {tripData?.hotels.map((hotel, index) => (
+                <HotelCardItem key={hotel.hotel_name} hotel={hotel} />
+              ))}
+            </div>
+          ),
+        },
+        ...tripData?.itinerary.map((dayData) => ({
+          title: `Day ${dayData?.day}`,
+          content: (
+            <div className="">
+              <p>
+                {" "}
+                <strong>Best Time</strong> :{" "}
+                <strong className="text-primary">
+                  {" "}
+                  <em> {dayData?.best_time_to_visit_day}</em>{" "}
+                </strong>
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
+                {dayData?.activities.map((activity, index) => (
+                  <PlaceCardItem
+                    key={activity.place_name}
+                    activity={activity}
+                  />
+                ))}
+              </div>
+            </div>
+          ),
+        })),
+      ]
+    : [];
   return (
-    <div className="relative w-full h-[83vh] overflow-auto overflow-y-hidden border shadow-xl hover:shadow-green-300 rounded-2xl ">
-      {tripData ? <Timeline data={data} tripData={tripData} /> : 
-      <div>
-        <h2 className="flex gap-2 items-center absolute bottom-10 text-3xl text-white left-20">  <span className="text-primary flex gap-2 items-center"><ArrowLeft size={32}/> Getting</span> to know you to build perfect trip here...</h2>
-      <Image src={'/travel.png'} alt="travel" width={'800'} height={'800'} className="w-full h-full object-cover rounded-3xl"/>
-      
-
-      </div>
-
-      }
+    <div className="relative w-full h-[83vh] overflow-auto ">
+      {tripData ? (
+        <Timeline data={data} tripData={tripData} />
+      ) : (
+        <div>
+          <h2 className="flex gap-2 items-center absolute bottom-10 text-3xl text-white left-20">
+            {" "}
+            <span className="text-primary flex gap-2 items-center">
+              <ArrowLeft size={32} /> Getting
+            </span>{" "}
+            to know you to build perfect trip here...
+          </h2>
+          <Image
+            src={"/travel.png"}
+            alt="travel"
+            width={"800"}
+            height={"800"}
+            className="w-full h-full object-cover rounded-3xl"
+          />
+        </div>
+      )}
     </div>
   );
 }
