@@ -58,9 +58,9 @@ const Hero = () => {
         </div>
         {/* suggestion list */}
 
-        <div className='flex gap-5'>
+        <div className='flex gap-5 '>
             {suggestions.map((suggestion, index)=>(
-                <div key={index} className='flex items-center gap-2 border rounded-full p-2 cursor-pointer hover:bg-primary hover:text-white'>
+                <div key={index} className='flex items-center  gap-2 border rounded-full p-2 cursor-pointer hover:bg-primary hover:text-white'>
                     {suggestion.icon}
                     <h2 className='text-sm'>{suggestion.title}</h2>
                 </div>

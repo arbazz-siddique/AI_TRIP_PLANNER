@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from 'openai';
+import { aj } from "../arcjet/route";
+import { currentUser } from "@clerk/nextjs/server";
 
 
 const openai = new OpenAI({
@@ -110,6 +112,19 @@ Return the output strictly in **valid JSON format** following this schema:
 
 export async function POST(req:NextRequest) {
     const {messages, isFinal} = await req.json();
+    const user = await currentUser();
+    const decision = await aj.protect(req, { userId:user?.primaryEmailAddress?.emailAddress ?? '', requested: isFinal ? 5 : 0});
+    console.log(decision)
+    // @ts-ignore
+    if (decision?.reason?.remaining == 0) {
+    return NextResponse.json(
+      {
+        resp:'No Free Credit Remaining Switch to Premium',
+        ui:'limit'
+      }
+    );
+  }
+    
     try {
     const completion = await openai.chat.completions.create({
     model: 'gemini-2.0-flash',
