@@ -1,4 +1,5 @@
 'use client'
+import GlobalMap from '@/app/create-new-trip/_components/GlobalMap';
 import Iternerary from '@/app/create-new-trip/_components/Iternerary';
 import { Trip } from '@/app/my-trips/page';
 import { useTripDetail, useUserDetail } from '@/app/provider'
@@ -29,8 +30,13 @@ function ViewTrip() {
         setTripDetailInfo(result?.tripDetail)
     }
   return (
-    <div>
-        <Iternerary />
+    <div className='grid grid-cols-5'>
+        <div className='col-span-3'>
+<Iternerary />
+        </div>
+        <div className='col-span-2'>
+            <GlobalMap />
+        </div>
     </div>
   )
 }
