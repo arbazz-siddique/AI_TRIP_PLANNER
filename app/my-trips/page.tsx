@@ -33,26 +33,27 @@ function MyTrips() {
       console.log(result)
     }
   return (
-    <div className='px-10 p-10 md:px-24 lg:px-48'>
-        <h2 className='font-bold text-3xl'>My Trips</h2>
-        {
-            myTrips.length ==0 &&
-            <div className='p-7 border rounded-2xl flex flex-col items-center justify-center gap-5 mt-6'>
-                <h2>You don't have any trip yet, <span className='text-primary'>Create One</span></h2>
-                <Link href={'/create-new-trip'}>
-                <Button className='cursor-progress'>Create New Trip <ChevronsUp/> </Button>
-                </Link>
-                
-            </div>
-        }
+    <div className='px-4 py-6 sm:px-6 md:px-10 lg:px-20 xl:px-32 2xl:px-48'>
+      <h2 className='font-bold text-2xl sm:text-3xl lg:text-4xl'>My Trips</h2>
 
-        <div className='grid grid-cols-2 lg:grid-cols-3 gap-5 mt-6'>
-          {
-            myTrips.map((trip, index)=>(
-              <MyTripCardItem trip={trip} key={index}/>
-            ))
-          }
+      {myTrips.length === 0 && (
+        <div className='p-5 sm:p-7 mt-6 border rounded-2xl flex flex-col items-center justify-center gap-4 sm:gap-5'>
+          <h2 className='text-center text-base sm:text-lg'>
+            You don't have any trip yet, <span className='text-primary'>Create One</span>
+          </h2>
+          <Link href={'/create-new-trip'}>
+            <Button className='flex items-center gap-2'>
+              Create New Trip <ChevronsUp className='h-4 w-4 sm:h-5 sm:w-5' />
+            </Button>
+          </Link>
         </div>
+      )}
+
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-6'>
+        {myTrips.map((trip, index) => (
+          <MyTripCardItem trip={trip} key={index} />
+        ))}
+      </div>
     </div>
   )
 }

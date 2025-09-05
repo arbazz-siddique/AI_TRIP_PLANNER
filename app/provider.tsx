@@ -37,6 +37,7 @@ const Provider = ({
   return (
     <UserDetailContext.Provider value={{userDetail, setUserDetail}}>
       <TripDetailContext.Provider value={{tripDetailInfo, setTripDetailInfo}}>
+        
       <div>
         <Header />
         {children}

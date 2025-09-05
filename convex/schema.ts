@@ -14,4 +14,13 @@ export default defineSchema({
         tripDetail: v.any(),
         uid: v.id('UserTable')
     })
+    ,
+    ContactMessages:defineTable({
+    name: v.string(),
+    email: v.string(),
+    phone: v.optional(v.string()),     // make phone optional
+    subject: v.string(),
+    message: v.string(),
+    createdAt: v.number(),    
+    })
 })
