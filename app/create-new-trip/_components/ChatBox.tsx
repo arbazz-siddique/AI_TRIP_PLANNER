@@ -191,62 +191,64 @@ const ChatBox = () => {
     }
   },[isFinal])
   return (
-    <div className="h-[85vh] flex flex-col border shadow-xl hover:shadow-primary rounded-2xl p-5">
-      {messages.length == 0 && (
-        <EmptyState
-          onSelectOption={(v: string) => {
-            setUserInput(v);
-            onSend();
-          }}
-        />
-      )}
-      {/* display message */}
-      <section className="flex-1 overflow-y-auto p-4">
-        {messages.map((msg: Message, index) =>
-          msg.role == "user" ? (
-            <div className="flex justify-end mt-2" key={index}>
-              <div className="max-w-lg bg-primary text-white px-4 py-2 rounded-lg">
-                {msg.content}
-              </div>
-            </div>
-          ) : (
-            <div className="flex justify-start mt-2" key={index}>
-              <div className="max-w-lg bg-gray-300 text-black px-4 py-2 rounded-lg">
-                {msg.content}
-                {RenderGenerativeUi(msg.ui ?? "")}
-              </div>
-            </div>
-          )
-        )}
+    <div className="h-[85vh] flex flex-col border shadow-xl hover:shadow-primary rounded-2xl p-3 sm:p-5">
+  {messages.length == 0 && (
+    <EmptyState
+      onSelectOption={(v: string) => {
+        setUserInput(v);
+        onSend();
+      }}
+    />
+  )}
 
-        {loading && (
-          <div className="flex justify-start mt-2">
-            <div className="max-w-lg bg-transparent text-black px-4 py-2 rounded-lg">
-              <Ellipsis className="animate-bounce " />
-            </div>
+  {/* display message */}
+  <section className="flex-1 overflow-y-auto p-2 sm:p-4">
+    {messages.map((msg: Message, index) =>
+      msg.role == "user" ? (
+        <div className="flex justify-end mt-2" key={index}>
+          <div className="max-w-[85%] sm:max-w-md md:max-w-lg bg-primary text-white px-3 sm:px-4 py-2 rounded-lg text-sm sm:text-base">
+            {msg.content}
           </div>
-        )}
-      </section>
-
-      {/* user input */}
-      <section>
-        <div className="border rounded-2xl p-4 relative">
-          <Textarea
-            placeholder="Start Conversation with AI Or you can selection option above like 'Create New Trip' "
-            className="w-full h-28 bg-transparent border-none focus-visible:ring-0 shadow-none resize-none"
-            onChange={(event) => setUserInput(event.target.value)}
-            value={userInput}
-          />
-          <Button
-            size={"icon"}
-            className="absolute bottom-6 right-6 cursor-pointer"
-            onClick={() => onSend()}
-          >
-            <Send className="h-4 w-4" />
-          </Button>
         </div>
-      </section>
+      ) : (
+        <div className="flex justify-start mt-2" key={index}>
+          <div className="max-w-[85%] sm:max-w-md md:max-w-lg bg-gray-300 text-black px-3 sm:px-4 py-2 rounded-lg text-sm sm:text-base">
+            {msg.content}
+            {RenderGenerativeUi(msg.ui ?? "")}
+          </div>
+        </div>
+      )
+    )}
+
+    {loading && (
+      <div className="flex justify-start mt-2">
+        <div className="max-w-[85%] sm:max-w-md md:max-w-lg bg-transparent text-black px-3 sm:px-4 py-2 rounded-lg">
+          <Ellipsis className="animate-bounce " />
+        </div>
+      </div>
+    )}
+  </section>
+
+  {/* user input */}
+  <section>
+    <div className="border rounded-2xl p-3 sm:p-4 relative w-full">
+      <Textarea
+        placeholder="Start Conversation with AI To 'Create New Trip' "
+        className="w-full min-h-[60px] sm:min-h-[80px] md:min-h-[100px] bg-transparent border-none focus-visible:ring-0 shadow-none resize-y text-sm sm:text-base"
+        onChange={(event) => setUserInput(event.target.value)}
+        value={userInput}
+      />
+      <Button
+        size="icon"
+        className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 cursor-pointer"
+        onClick={() => onSend()}
+      >
+        <Send className="h-4 w-4 sm:h-5 sm:w-5" />
+      </Button>
     </div>
+  </section>
+</div>
+
   );
 };
 

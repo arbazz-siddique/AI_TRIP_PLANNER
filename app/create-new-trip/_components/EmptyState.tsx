@@ -3,7 +3,7 @@ import React from 'react'
 
 const EmptyState = ({onSelectOption}:any) => {
   return (
-    <div className="mt-8 sm:mt-10 px-4 sm:px-6 lg:px-8">
+    <div className="mt-8 sm:mt-10 px-4 sm:px-6 lg:px-8 h-[400px] sm:h-[500px] md:h-[200px] lg:h-[620px]">
       <h2 className="font-bold text-xl sm:text-2xl text-center leading-snug">
         Start Planning Your Next{' '}
         <strong className="text-primary">Adventure with AI</strong>
