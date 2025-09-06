@@ -86,7 +86,7 @@ const Hero = () => {
         <HeroVideoDialog
           className="block dark:block w-full"
           animationStyle="from-center"
-          videoSrc="https://www.example.com/dummy-video"
+          videoSrc="https://youtu.be/qpeGHPfFyNY?si=jKIjqcA-pM4LFlpf"
           thumbnailSrc="https://mma.prnewswire.com/media/2401528/1_MindtripProduct.jpg?p=facebook"
           thumbnailAlt="Hero Video"
         />

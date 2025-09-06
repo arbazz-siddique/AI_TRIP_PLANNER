@@ -85,16 +85,16 @@ const Footer = () => {
         <div>
           <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
           <div className="flex space-x-4">
-            <a href="#" className="text-gray-600 hover:text-green-500">
+            <a href="https://www.facebook.com/profile.php?id=100088561035893" className="text-gray-600 hover:text-green-500">
               <FaFacebook size={24} />
             </a>
-            <a href="#" className="text-gray-600 hover:text-green-500">
+            <a href="https://x.com/ArbazSiddi52550" className="text-gray-600 hover:text-green-500">
               <FaTwitter size={24} />
             </a>
-            <a href="#" className="text-gray-600 hover:text-green-500">
+            <a href="https://www.instagram.com/mohammadarbazz17/" className="text-gray-600 hover:text-green-500">
               <FaInstagram size={24} />
             </a>
-            <a href="#" className="text-gray-600 hover:text-green-500">
+            <a href="https://www.linkedin.com/in/arbaz-siddique-b99529244/" className="text-gray-600 hover:text-green-500">
               <FaLinkedin size={24} />
             </a>
           </div>

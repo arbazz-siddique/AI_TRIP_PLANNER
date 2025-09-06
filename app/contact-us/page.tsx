@@ -328,16 +328,16 @@ const ContactUs: React.FC = () => {
                 Follow us
               </p>
               <div className="flex items-center gap-4">
-                <a href="#" className="text-gray-600 hover:text-blue-600">
+                <a href="https://www.facebook.com/profile.php?id=100088561035893" className="text-gray-600 hover:text-blue-600">
                   <FaFacebook size={20} />
                 </a>
-                <a href="#" className="text-gray-600 hover:text-sky-400">
+                <a href="https://x.com/ArbazSiddi52550" className="text-gray-600 hover:text-sky-400">
                   <FaTwitter size={20} />
                 </a>
-                <a href="#" className="text-gray-600 hover:text-pink-500">
+                <a href="https://www.instagram.com/mohammadarbazz17/" className="text-gray-600 hover:text-pink-500">
                   <FaInstagram size={20} />
                 </a>
-                <a href="#" className="text-gray-600 hover:text-blue-700">
+                <a href="https://www.linkedin.com/in/arbaz-siddique-b99529244/" className="text-gray-600 hover:text-blue-700">
                   <FaLinkedin size={20} />
                 </a>
               </div>
